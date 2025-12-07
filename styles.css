@@ -57,18 +57,83 @@ body {
     background-color: #0a0a0a;
 }
 
-/* Inner dashed border effect */
-.experiment-card::before {
-    content: "";
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    right: 5px;
-    bottom: 5px;
-    border: 1px dashed #444;
-    border-radius: 6px;
-    pointer-events: none;
-    z-index: 1;
+/* Comms Uplink Styles */
+.comms-container {
+    background-color: #000;
+    border: 1px solid #333;
+    padding: 20px;
+    font-family: 'Space Mono', monospace;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+.comms-log {
+    height: 200px;
+    overflow-y: auto;
+    border-bottom: 1px solid #333;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    color: #00ff00;
+    /* Terminal Green */
+    font-size: 0.9rem;
+}
+
+.comms-message {
+    margin-bottom: 5px;
+}
+
+.system-message {
+    opacity: 0.7;
+}
+
+.user-message {
+    color: #00ffff;
+    /* Cyan for user */
+}
+
+.comms-input-area {
+    display: flex;
+    gap: 10px;
+}
+
+.comms-input {
+    flex-grow: 1;
+    background-color: #111;
+    border: 1px solid #555;
+    color: #00ff00;
+    padding: 10px;
+    font-family: 'Space Mono', monospace;
+    outline: none;
+}
+
+.comms-input:focus {
+    border-color: #00ff00;
+}
+
+.comms-send-btn {
+    background-color: #003300;
+    color: #00ff00;
+    border: 1px solid #00ff00;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: 'Space Mono', monospace;
+    transition: all 0.2s;
+}
+
+.comms-send-btn:hover {
+    background-color: #00ff00;
+    color: #000;
+}
+
+top: 5px;
+left: 5px;
+right: 5px;
+bottom: 5px;
+border: 1px dashed #444;
+border-radius: 6px;
+pointer-events: none;
+z-index: 1;
 }
 
 /* Content needs to be above the pseudo-element */

@@ -1,3 +1,57 @@
+// Import Firebase from CDN
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+import { firebaseConfig } from "./firebase-config.js";
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const db = getFirestore(app);
+
+// Comms Logic
+const sendBtn = document.getElementById('comms-send-btn');
+const inputField = document.getElementById('comms-input');
+const logArea = document.getElementById('comms-log');
+
+if (sendBtn && inputField) {
+    sendBtn.addEventListener('click', sendMessage);
+    inputField.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendMessage();
+    });
+}
+
+async function sendMessage() {
+    const text = inputField.value.trim();
+    if (!text) return;
+
+    // UI Feedback immediately
+    appendLog(`> SENDING: ${text}`, 'user-message');
+    inputField.value = '';
+
+    try {
+        await addDoc(collection(db, "messages"), {
+            text: text,
+            timestamp: serverTimestamp(),
+            uid: "anonymous_visitor" // We don't have auth yet
+        });
+        appendLog(`> TRANSMISSION SUCCESSFUL.`, 'system-message');
+    } catch (e) {
+        console.error("Error sending message: ", e);
+        appendLog(`> ERROR: TRANSMISSION FAILED.`, 'system-message');
+    }
+}
+
+function appendLog(message, className) {
+    const div = document.createElement('div');
+    div.className = `comms-message ${className || ''}`;
+    div.textContent = message;
+    logArea.appendChild(div);
+    logArea.scrollTop = logArea.scrollHeight;
+}
+
+// GitHub API Logic
 document.addEventListener('DOMContentLoaded', () => {
     const username = 'THEBLUEFLASH18';
     const apiUrl = `https://api.github.com/users/${username}/repos?sort=updated&direction=desc`;
