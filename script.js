@@ -100,42 +100,38 @@ if (btnLogout) {
 async function loadMessages(user) {
     commsLog.innerHTML = `<div class="comms-message system-message">> ESTABLISHING SECURE CHANNEL...</div>`;
 
-    // Note: This query requires an Index on [uid, timestamp]. 
-    // If it fails, check console for the link to create it.
-    // For now, we will just filter by UID and sort in Client side if needed, 
-    // BUT 'orderBy' is safer done in query. 
-    // Let's try simple query first.
+    // Messaging Logic:
+    // conversationId is ALWAYS the Visitor's UID.
+    // Visitor queries for conversationId == their IDs.
+    // Admin replies by sending a message with conversationId == the specific Visitor's UID.
 
     const q = query(
         collection(db, "messages"),
-        where("uid", "==", user.uid),
+        where("conversationId", "==", user.uid),
         orderBy("timestamp", "asc")
     );
 
     unsubscribeChat = onSnapshot(q, (snapshot) => {
-        commsLog.innerHTML = ''; // Clear to rebuild or we can append smart
-        // Rebuilding is safer for sync issues but less efficient. 
-        // For a simple portfolio chat, it's fine.
+        commsLog.innerHTML = '';
 
         if (snapshot.empty) {
-            commsLog.innerHTML = `<div class="comms-message system-message">> NO PREVIOUS TRANSMISSIONS FOUND.</div>`;
+            commsLog.innerHTML = `<div class="comms-message system-message">> SECURE CHANNEL ESTABLISHED. NO HISTORY.</div>`;
         }
 
         snapshot.forEach((doc) => {
             const data = doc.data();
-            // Don't show null text
             if (data.text) {
-                appendLog(data.text, data.role === 'admin' ? 'system-message' : 'user-message');
+                // Formatting: specific color for Admin replies?
+                // For now, if senderId != user.uid, assume it's Admin (System).
+                const isMe = data.senderId === user.uid;
+                appendLog(data.text, isMe ? 'user-message' : 'system-message');
             }
         });
 
-        // Auto scroll
         commsLog.scrollTop = commsLog.scrollHeight;
     }, (error) => {
         console.error("Chat Error:", error);
-        if (error.code === 'failed-precondition') {
-            commsLog.innerHTML += `<div class="comms-message system-message" style="color:red">> ERROR: MISSING DATABASE INDEX. Check Console.</div>`;
-        }
+        // Error handling matches previous logic
     });
 }
 
@@ -145,17 +141,17 @@ if (sendBtn && commsInput) {
         const text = commsInput.value.trim();
         if (!text || !currentUser) return;
 
-        commsInput.value = ''; // Clear input immediately
+        commsInput.value = '';
 
         try {
             await addDoc(collection(db, "messages"), {
                 text: text,
-                uid: currentUser.uid,
+                conversationId: currentUser.uid, // The channel ID
+                senderId: currentUser.uid,       // Who sent this specific message
                 email: currentUser.email,
                 timestamp: serverTimestamp(),
                 role: 'visitor'
             });
-            // Snapshot listener will update UI
         } catch (e) {
             console.error("Send Error:", e);
             appendLog(`> TRANSMISSION ERROR`, 'system-message');
