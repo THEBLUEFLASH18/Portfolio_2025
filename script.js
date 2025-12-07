@@ -22,6 +22,9 @@ const commsLog = document.getElementById('comms-log');
 const commsInput = document.getElementById('comms-input');
 const sendBtn = document.getElementById('comms-send-btn');
 
+// Debugging
+console.log("Portfolio Script Loaded.");
+
 // Auth Inputs
 const emailInput = document.getElementById('auth-email');
 const passInput = document.getElementById('auth-password');
@@ -30,6 +33,8 @@ const btnRegister = document.getElementById('btn-register');
 const btnGoogle = document.getElementById('btn-google');
 const btnLogout = document.getElementById('btn-logout');
 
+console.log("Auth Elements Found:", { btnLogin, btnRegister, btnGoogle });
+
 let currentUser = null;
 let unsubscribeChat = null;
 
@@ -37,6 +42,7 @@ let unsubscribeChat = null;
 
 // Auth State Observer
 onAuthStateChanged(auth, (user) => {
+    console.log("Auth State Changed:", user);
     currentUser = user;
     if (user) {
         // User Logged In
@@ -59,9 +65,12 @@ onAuthStateChanged(auth, (user) => {
 // Login
 if (btnLogin) {
     btnLogin.addEventListener('click', async () => {
+        console.log("Login Clicked");
         try {
             await signInWithEmailAndPassword(auth, emailInput.value, passInput.value);
+            console.log("Login Success");
         } catch (error) {
+            console.error("Login Error", error);
             alert(`LOGIN FAILED: ${error.message}`);
         }
     });
@@ -70,9 +79,12 @@ if (btnLogin) {
 // Register
 if (btnRegister) {
     btnRegister.addEventListener('click', async () => {
+        console.log("Register Clicked");
         try {
             await createUserWithEmailAndPassword(auth, emailInput.value, passInput.value);
+            console.log("Register Success");
         } catch (error) {
+            console.error("Register Error", error);
             alert(`REGISTRATION FAILED: ${error.message}`);
         }
     });
@@ -81,8 +93,10 @@ if (btnRegister) {
 // Google Sign In
 if (btnGoogle) {
     btnGoogle.addEventListener('click', async () => {
+        console.log("Google Clicked");
         try {
             await signInWithPopup(auth, googleProvider);
+            console.log("Google Success");
         } catch (error) {
             console.error(error);
             alert(`GOOGLE SIGN-IN FAILED: ${error.message}`);
