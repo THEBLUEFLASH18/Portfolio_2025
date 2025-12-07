@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+body {
+    background-color: #111;
+    color: #eee;
+    font-family: 'Space Mono', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.console-container {
+    border: 2px solid #ccc;
+    padding: 40px;
+    width: 650px;
+    max-width: 90%;
+    background-color: #111;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.header {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    letter-spacing: 1px;
+    color: #eee;
+    text-transform: uppercase;
+}
+
+.header .dim {
+    color: #4a5568;
+    /* Darker grey as seen in image */
+}
+
+.content {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.line {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.prefix {
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+/* Progress Bar Styling */
+.progress-bar {
+    display: inline-flex;
+    height: 24px;
+    width: 250px;
+    margin-left: 15px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.progress-fill {
+    background-color: #a0aec0;
+    /* Light grey fill */
+    width: 30%;
+    height: 100%;
+    border-right: 1px solid #111;
+    transition: width 0.1s linear;
+    /* Added transition for potential JS animation */
+}
+
+.progress-pattern {
+    flex-grow: 1;
+    background-image: radial-gradient(#666 1px, transparent 1px);
+    background-size: 3px 3px;
+    opacity: 0.6;
+}
