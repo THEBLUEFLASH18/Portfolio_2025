@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(repos => {
             // Filter out forks if desired, or just take the top 3
             // const myRepos = repos.filter(repo => !repo.fork).slice(0, 3);
-            const myRepos = repos.slice(0, 3); // Just take the top 3 most recently updated for now
+            const myRepos = repos.slice(0, 6); // Just take the top 6 most recently updated for now
 
             myRepos.forEach((repo, index) => {
                 if (index < cards.length) {
@@ -29,6 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
     function updateCard(card, repo) {
+        // Update URL
+        card.href = repo.html_url;
+
         // Update Title - Using a generic "Project // [Repo Name]" format
         const titleEl = card.querySelector('.card-title');
         if (titleEl) titleEl.textContent = `PROJECT // ${repo.name}`;

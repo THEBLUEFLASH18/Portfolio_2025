@@ -6,6 +6,10 @@
     color: white;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Space Mono', monospace;
     margin: 0;
@@ -21,9 +25,12 @@ body {
 
 .experiments-grid {
     display: flex;
-    gap: 20px;
+    gap: 40px;
+    /* Increased spacing */
     flex-wrap: wrap;
-    margin-top: 20px;
+    margin-top: 30px;
+    justify-content: center;
+    /* Center cards if odd number or restricted width */
 }
 
 .experiment-card {
@@ -36,6 +43,18 @@ body {
     background-color: #050505;
     position: relative;
     border-radius: 10px;
+    /* Link styling resets */
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.experiment-card:hover {
+    transform: translateY(-5px);
+    border-color: #555;
+    background-color: #0a0a0a;
 }
 
 /* Inner dashed border effect */
@@ -130,11 +149,28 @@ nav div {
 
 nav div button {
     margin-left: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #555;
+    background-color: transparent;
+    color: #eee;
+    font-family: 'Space Mono', monospace;
+    /* Match body font */
+    font-size: 1rem;
+    /* Adjust size */
+    padding: 10px 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-nav div button:hover {
-    cursor: pointer;
+nav div button a {
+    text-decoration: none;
+    color: inherit;
+}
+
+nav div button a:hover {
+    background-color: #eee;
+    color: #111;
+    border-color: #eee;
 }
 
 nav div img {
@@ -146,4 +182,102 @@ nav div img {
 nav div:first-child {
     border: none;
     background-color: transparent;
+}
+
+/* Researcher Section Styles */
+.researcher-title {
+    font-size: 1.5rem;
+    color: #ccc;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.about-me-highlight {
+    color: #00ffff;
+    /* Cyber cyan for "ME" */
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
+}
+
+.researcher-card {
+    border: 1px dashed #666;
+    /* Outer dashed border per image */
+    border-radius: 20px;
+    padding: 40px;
+    /* Increased padding */
+    position: relative;
+    background-color: #080808;
+    max-width: none;
+    /* Remove max-width for hero effect */
+    width: 100%;
+    margin-bottom: 40px;
+    /* Spacing below hero */
+    display: flex;
+    flex-direction: row;
+    /* Layout image and details side-by-side */
+    gap: 40px;
+    /* Space between text and image */
+    align-items: center;
+}
+
+/* Double border effect using box-shadow or another nested div? 
+   The image shows a single dashed line with rounded corners. 
+   Our previous cards had double. Let's stick to the reference: Single dashed line.
+*/
+
+.researcher-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.researcher-details .detail-row {
+    align-items: flex-start;
+    /* Align text to top for multiline interests */
+}
+
+.researcher-details .detail-label {
+    min-width: 180px;
+    /* Wider label for "AFFILIATION" etc */
+    color: #888;
+}
+
+.researcher-details .detail-value {
+    color: #ddd;
+    text-transform: uppercase;
+}
+
+.researcher-photo {
+    position: relative;
+    /* Change from absolute to relative for flex layout */
+    top: auto;
+    right: auto;
+    width: 350px;
+    /* Larger image */
+    height: 350px;
+    object-fit: cover;
+    border: 2px solid #00ffff;
+    /* Cyber border */
+    border-radius: 10px;
+    /* Slight rounded corners or circle? Let's go square per console aesthetic */
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+    /* Make sure text doesn't overlap if image is huge. 
+       We might need to use flexbox for the card content instead of absolute positioning if the image is large.
+       For now, let's try absolute but update the container detailing width. */
+    flex-shrink: 0;
+    /* Prevent image from shrinking */
+}
+
+/* Update details to not overlap with image */
+.researcher-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 1rem;
+    line-height: 1.6;
+    flex-grow: 1;
+    /* Take remaining space */
+    max-width: none;
 }
