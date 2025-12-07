@@ -28,4 +28,4 @@ Use the Firebase console → Firestore → `messages` → “Add document” wit
 The dashboard already renders any doc where `conversationId` matches the visitor and orders them by `timestamp`, showing admin vs visitor styling.
 
 ## Running locally
-Serve the files with any static server (or open `index.html`). If not deploying through Netlify, replace `FIREBASE_KEY_PLACEHOLDER` in `script.js` with your real `apiKey` before loading the page. Replace CDN Firebase version numbers if you want to pin a different release.***
+Serve the files with any static server (or open `index.html`). If not deploying through Netlify, replace `FIREBASE_KEY_PLACEHOLDER` in `script.js` with your real `apiKey` before loading the page. Replace CDN Firebase version numbers if you want to pin a different release.
