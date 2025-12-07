@@ -411,7 +411,91 @@ nav div:first-child {
     gap: 15px;
     font-size: 1rem;
     line-height: 1.6;
-    flex-grow: 1;
     /* Take remaining space */
     max-width: none;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    /* Redesign Nav for Mobile */
+    nav {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 0;
+        gap: 20px;
+    }
+
+    nav div {
+        flex-direction: column;
+        width: 100%;
+        padding: 0;
+        gap: 10px;
+    }
+
+    nav div:first-child {
+        border-bottom: 2px solid #ccc;
+        padding-bottom: 10px;
+        justify-content: center;
+    }
+
+    nav div button {
+        margin-left: 0;
+        width: 90%;
+        text-align: center;
+        background-color: #000;
+        /* Better touch target contrast */
+    }
+
+    /* Redesign Researcher Card for Mobile */
+    .researcher-card {
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .researcher-photo {
+        width: 100%;
+        height: auto;
+        max-width: 300px;
+        /* Prevent massive images on pads */
+        margin: 0 auto;
+        /* Center it */
+    }
+
+    .researcher-details .detail-label {
+        min-width: 120px;
+        /* Shrink label spacing */
+        font-size: 0.9rem;
+    }
+
+    .researcher-details {
+        width: 100%;
+    }
+
+    /* Adjust Grid */
+    .experiment-card {
+        flex: 1 1 100%;
+        /* Full width on mobile */
+        min-width: 0;
+    }
+
+    .experiments-grid {
+        gap: 20px;
+    }
+
+    /* Comms Mobile */
+    .comms-container {
+        padding: 10px;
+    }
+
+    .comms-input-area {
+        flex-direction: column;
+    }
+
+    .comms-send-btn {
+        width: 100%;
+    }
 }
