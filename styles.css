@@ -1,7 +1,41 @@
 * {
     box-sizing: border-box;
-    border: 2px solid #ccc;
-    padding: 5px;
     background-color: #111;
-    height: 800px;
+    color: white;
+}
+
+body {}
+
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 75px;
+    border: 2px solid #ccc;
+}
+
+nav div {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+nav div button {
+    margin-left: 20px;
+    border: 1px solid #ccc;
+}
+
+nav div button:hover {
+    cursor: pointer;
+}
+
+nav div img {
+    width: 120px;
+    border: none;
+    background-color: transparent;
+}
+
+nav div:first-child {
+    border: none;
+    background-color: transparent;
 }
