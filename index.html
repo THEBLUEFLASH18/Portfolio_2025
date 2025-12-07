@@ -270,15 +270,44 @@
         <div id="comms-uplink" class="section-card">
             <h2>Comms // Uplink</h2>
             <div class="comms-container">
-                <div class="comms-log" id="comms-log">
-                    <div class="comms-message system-message">> INITIALIZING SECURE CONNECTION...</div>
-                    <div class="comms-message system-message">> CONNECTION ESTABLISHED.</div>
-                    <div class="comms-message system-message">> WAITING FOR INPUT...</div>
+
+                <!-- AUTHENTICATION INTERFACE -->
+                <div id="auth-container">
+                    <div class="comms-message system-message">> AUTHENTICATION REQUIRED.</div>
+                    <div class="comms-message system-message">> IDENTIFY YOURSELF TO PROCEED.</div>
+
+                    <div class="auth-forms">
+                        <div class="auth-box">
+                            <input type="email" id="auth-email" placeholder="EMAIL ADDRESS"
+                                class="comms-input full-width">
+                            <input type="password" id="auth-password" placeholder="PASSWORD"
+                                class="comms-input full-width">
+                            <div class="auth-buttons">
+                                <button id="btn-login" class="comms-send-btn">LOGIN</button>
+                                <button id="btn-register" class="comms-send-btn outline-btn">REGISTER</button>
+                            </div>
+                        </div>
+                        <div class="auth-divider">--- OR ---</div>
+                        <button id="btn-google" class="comms-send-btn google-btn">SIGN IN WITH GOOGLE
+                            CHECKPOINT</button>
+                    </div>
                 </div>
-                <div class="comms-input-area">
-                    <input type="text" id="comms-input" placeholder="ENTER MESSAGE TRANSMISSION..." class="comms-input">
-                    <button id="comms-send-btn" class="comms-send-btn">SEND</button>
+
+                <!-- CHAT INTERFACE (Hidden by default) -->
+                <div id="chat-container" style="display: none;">
+                    <div class="chat-header">
+                        <span id="user-display">USER: UNKNOWN</span>
+                        <button id="btn-logout" class="text-btn">[DISCONNECT]</button>
+                    </div>
+                    <div class="comms-log" id="comms-log">
+                        <!-- Messages will load here -->
+                    </div>
+                    <div class="comms-input-area">
+                        <input type="text" id="comms-input" placeholder="ENTER MESSAGE..." class="comms-input">
+                        <button id="comms-send-btn" class="comms-send-btn">TRANSMIT</button>
+                    </div>
                 </div>
+
             </div>
         </div>
 

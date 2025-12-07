@@ -105,6 +105,72 @@ body {
     padding: 10px;
     font-family: 'Space Mono', monospace;
     outline: none;
+    transition: border-color 0.2s;
+}
+
+.comms-input.full-width {
+    width: 100%;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.auth-forms {
+    margin-top: 20px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.outline-btn {
+    background-color: transparent;
+    border: 1px solid #555;
+    color: #888;
+}
+
+.outline-btn:hover {
+    border-color: #00ff00;
+    color: #00ff00;
+}
+
+.auth-divider {
+    text-align: center;
+    color: #444;
+    margin: 15px 0;
+}
+
+.google-btn {
+    width: 100%;
+    background-color: #1a1a1a;
+    border-color: #333;
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed #333;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    color: #00ffff;
+    font-size: 0.8rem;
+}
+
+.text-btn {
+    background: none;
+    border: none;
+    color: #ff3333;
+    font-family: 'Space Mono', monospace;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.text-btn:hover {
+    color: #ff0000;
 }
 
 .comms-input:focus {
@@ -126,14 +192,17 @@ body {
     color: #000;
 }
 
-top: 5px;
-left: 5px;
-right: 5px;
-bottom: 5px;
-border: 1px dashed #444;
-border-radius: 6px;
-pointer-events: none;
-z-index: 1;
+.experiment-card::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 1px dashed #444;
+    border-radius: 6px;
+    pointer-events: none;
+    z-index: 1;
 }
 
 /* Content needs to be above the pseudo-element */
