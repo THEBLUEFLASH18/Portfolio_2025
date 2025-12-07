@@ -1,7 +1,7 @@
 // Firebase Configuration
 // Production: Netlify 'sed' command replaces "FIREBASE_KEY_PLACEHOLDER" with real env var.
 const firebaseConfig = {
-    apiKey: "FIREBASE_KEY",
+    apiKey: "FIREBASE_KEY_PLACEHOLDER",
     authDomain: "portfolio-messaging-53591.firebaseapp.com",
     projectId: "portfolio-messaging-53591",
     storageBucket: "portfolio-messaging-53591.firebasestorage.app",

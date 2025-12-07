@@ -1,5 +1,5 @@
 [build]
-  command = "sed -i 's/FIREBASE_KEY_PLACEHOLDER/'\"$FIREBASE_KEY\"'/g' script.js"
+  command = "sed -i 's/FIREBASE_KEY_PLACEHOLDER/'$FIREBASE_KEY'/g' script.js"
   publish = "."
 
 [build.environment]
