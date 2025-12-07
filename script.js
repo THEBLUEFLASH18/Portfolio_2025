@@ -1,7 +1,3 @@
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const auth = getAuth(app);
-const googleProvider = new GoogleAuthProvider();
 
 // Firebase Configuration
 // Production: Netlify 'sed' command replaces "FIREBASE_KEY_PLACEHOLDER" with real env var.
@@ -14,6 +10,11 @@ const firebaseConfig = {
     appId: "1:96342758934:web:0ebcf941b940a7a20d4737",
     measurementId: "G-5F0794MX11"
 };
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
 
 
 
