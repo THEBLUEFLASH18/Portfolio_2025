@@ -62,10 +62,12 @@ onAuthStateChanged(auth, (user) => {
     }
 });
 
-// Login
-if (btnLogin) {
-    btnLogin.addEventListener('click', async () => {
-        console.log("Login Clicked");
+// Login (Form Submit)
+const loginForm = document.getElementById('login-form');
+if (loginForm) {
+    loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        console.log("Login Form Submitted");
         try {
             await signInWithEmailAndPassword(auth, emailInput.value, passInput.value);
             console.log("Login Success");

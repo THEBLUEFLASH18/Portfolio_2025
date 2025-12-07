@@ -277,16 +277,17 @@
                     <div class="comms-message system-message">> IDENTIFY YOURSELF TO PROCEED.</div>
 
                     <div class="auth-forms">
-                        <div class="auth-box">
-                            <input type="email" id="auth-email" placeholder="EMAIL ADDRESS"
+                        <form id="login-form" class="auth-box">
+                            <input type="email" id="auth-email" placeholder="EMAIL ADDRESS" required
                                 class="comms-input full-width">
-                            <input type="password" id="auth-password" placeholder="PASSWORD"
+                            <input type="password" id="auth-password" placeholder="PASSWORD" required
                                 class="comms-input full-width">
                             <div class="auth-buttons">
-                                <button id="btn-login" class="comms-send-btn">LOGIN</button>
-                                <button id="btn-register" class="comms-send-btn outline-btn">REGISTER</button>
+                                <button type="submit" id="btn-login" class="comms-send-btn">LOGIN</button>
+                                <button type="button" id="btn-register"
+                                    class="comms-send-btn outline-btn">REGISTER</button>
                             </div>
-                        </div>
+                        </form>
                         <div class="auth-divider">--- OR ---</div>
                         <button id="btn-google" class="comms-send-btn google-btn">SIGN IN WITH GOOGLE
                             CHECKPOINT</button>
