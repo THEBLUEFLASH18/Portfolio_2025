@@ -1,13 +1,14 @@
-// Import Firebase from CDN
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
-import { getFirestore, collection, addDoc, serverTimestamp, query, where, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
-import { firebaseConfig } from "./firebase-config.js";
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+// Firebase Configuration
+// Production: Netlify 'sed' command replaces "FIREBASE_KEY_PLACEHOLDER" with real env var.
+const firebaseConfig = {
+    apiKey: "FIREBASE_KEY",
+    authDomain: "portfolio-messaging-53591.firebaseapp.com",
+    projectId: "portfolio-messaging-53591",
+    storageBucket: "portfolio-messaging-53591.firebasestorage.app",
+    messagingSenderId: "96342758934",
+    appId: "1:96342758934:web:0ebcf941b940a7a20d4737",
+    measurementId: "G-5F0794MX11"
+};
 const analytics = getAnalytics(app);
 const db = getFirestore(app);
 const auth = getAuth(app);
