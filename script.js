@@ -177,10 +177,13 @@ async function loadMessages(user) {
         snapshot.forEach((doc) => {
             const data = doc.data();
             if (data.text) {
-                // Formatting: specific color for Admin replies?
-                // For now, if senderId != user.uid, assume it's Admin (System).
-                const isMe = data.senderId === user.uid;
-                appendLog(data.text, isMe ? 'user-message' : 'system-message');
+                const role = data.role || (data.senderId === user.uid ? 'visitor' : 'admin');
+                const className = role === 'visitor' ? 'user-message' : 'system-message';
+                const senderLabel = role === 'admin'
+                    ? (data.senderEmail || 'ADMIN')
+                    : (data.senderEmail || 'YOU');
+
+                appendLog(`${senderLabel}: ${data.text}`, className);
             }
         });
 
@@ -204,9 +207,9 @@ if (sendBtn && commsInput) {
                 text: text,
                 conversationId: currentUser.uid, // The channel ID
                 senderId: currentUser.uid,       // Who sent this specific message
-                email: currentUser.email,
+                senderEmail: currentUser.email || 'visitor',
+                role: 'visitor',
                 timestamp: serverTimestamp(),
-                role: 'visitor'
             });
         } catch (e) {
             console.error("Send Error:", e);
