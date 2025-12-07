@@ -40,25 +40,37 @@ let unsubscribeChat = null;
 
 // --- AUTH EVENT LISTENERS ---
 
+// Page State Helper
+const isDashboard = window.location.pathname.includes('dashboard.html');
+
 // Auth State Observer
 onAuthStateChanged(auth, (user) => {
     console.log("Auth State Changed:", user);
     currentUser = user;
-    if (user) {
-        // User Logged In
-        authContainer.style.display = 'none';
-        chatContainer.style.display = 'block';
-        userDisplay.textContent = `USER: ${user.email || 'ANONYMOUS'} // UID: ${user.uid.substring(0, 6)}...`;
 
-        loadMessages(user);
+    if (user) {
+        // User is Logged In
+        if (!isDashboard) {
+            // Redirect to Dashboard if on Index
+            console.log("Redirecting to Dashboard...");
+            window.location.href = 'dashboard.html';
+        } else {
+            // We are on Dashboard, Init Chat
+            userDisplay.textContent = `USER: ${user.email || 'ANONYMOUS'} // UID: ${user.uid.substring(0, 6)}...`;
+            loadMessages(user);
+        }
     } else {
-        // User Logged Out
-        authContainer.style.display = 'block';
-        chatContainer.style.display = 'none';
+        // User is Logged Out
+        if (isDashboard) {
+            // Redirect to Index if on Dashboard
+            console.log("Redirecting to Login...");
+            window.location.href = 'index.html';
+        }
+        // On Index, just show login (which is default in HTML now)
         userDisplay.textContent = 'USER: DISCONNECTED';
 
         if (unsubscribeChat) unsubscribeChat();
-        commsLog.innerHTML = `<div class="comms-message system-message">> TERMINAL LOCKED. LOGIN REQUIRED.</div>`;
+        if (commsLog) commsLog.innerHTML = `<div class="comms-message system-message">> TERMINAL LOCKED. LOGIN REQUIRED.</div>`;
     }
 });
 
