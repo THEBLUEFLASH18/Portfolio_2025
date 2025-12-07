@@ -1,16 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
 * {
     box-sizing: border-box;
     background-color: #111;
     color: white;
 }
 
-body {}
+body {
+    font-family: 'Space Mono', monospace;
+    margin: 0;
+    padding: 20px;
+}
+
+.section-card {
+    border: 2px solid #ccc;
+    margin-top: 20px;
+    padding: 20px;
+    min-height: 200px;
+}
+
+.experiments-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.experiment-card {
+    border: 2px solid #333;
+    /* Outer solid border */
+    padding: 20px;
+    flex: 1 1 350px;
+    /* Allow growing, start at 350px width */
+    min-width: 300px;
+    background-color: #050505;
+    position: relative;
+    border-radius: 10px;
+}
+
+/* Inner dashed border effect */
+.experiment-card::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 1px dashed #444;
+    border-radius: 6px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Content needs to be above the pseudo-element */
+.experiment-card>* {
+    position: relative;
+    z-index: 2;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.card-title {
+    font-size: 1.1rem;
+    color: #bbb;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.experiment-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    background-color: transparent;
+}
+
+.card-details {
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+.detail-row {
+    display: flex;
+    margin-bottom: 4px;
+}
+
+.detail-label {
+    min-width: 140px;
+    color: #888;
+}
+
+.detail-value {
+    color: #ddd;
+}
+
+.status-online {
+    color: #00ffff;
+    /* Cyber cyan */
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+}
+
+.status-warning {
+    color: #ffaa00;
+}
+
+.status-active {
+    color: #00ff00;
+}
 
 nav {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    height: 75px;
+    height: 90px;
     border: 2px solid #ccc;
 }
 
