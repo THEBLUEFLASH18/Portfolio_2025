@@ -1,25 +1,19 @@
 export class MatrixText {
     constructor(elementId, options = {}) {
         this.element = document.getElementById(elementId);
-        this.originalText = this.element.innerText;
+        // Use innerHTML to capture <br> tags, then parse
+        this.originalHTML = this.element.innerHTML;
+
         this.chars = options.chars || "01";
-        this.period = options.period || 300; // Interval between frames
-        this.duration = options.duration || 3000; // Duration of the scramble effect per letter needed? 
-        // Actually, the original React code had:
-        // initialDelay = 200
-        // letterAnimationDuration = 500
-        // letterInterval = 100 (stagger between letters starting)
+        this.period = options.period || 300;
+        this.duration = options.duration || 3000;
 
         this.letterAnimationDuration = options.letterAnimationDuration || 500;
         this.letterInterval = options.letterInterval || 100;
         this.initialDelay = options.initialDelay || 200;
 
-        this.letters = this.originalText.split('').map(char => ({
-            char,
-            isSpace: char === ' ',
-            isMatrix: false,
-            currentDisplay: char
-        }));
+        // Parse HTML into a structure that preserves formatting (br)
+        this.parsedContent = this.parseContent(this.originalHTML);
 
         this.isAnimating = false;
 
@@ -30,30 +24,66 @@ export class MatrixText {
         setTimeout(() => this.start(), this.initialDelay);
     }
 
+    parseContent(html) {
+        // Simple parser: split by <br> and reconstruct with markers
+        // We want a flat array of "items" where an item is either a character to animate
+        // or a special "break" marker.
+
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+
+        const items = [];
+
+        // Iterate over child nodes to handle text and BRs
+        Array.from(tempDiv.childNodes).forEach(node => {
+            if (node.nodeType === Node.TEXT_NODE) {
+                const text = node.textContent;
+                text.split('').forEach(char => {
+                    items.push({
+                        type: 'char',
+                        char: char,
+                        isSpace: char === ' ',
+                        isMatrix: false
+                    });
+                });
+            } else if (node.nodeName === 'BR') {
+                items.push({ type: 'break' });
+            }
+        });
+
+        return items;
+    }
+
     initDOM() {
         this.element.innerHTML = '';
-        this.element.style.display = 'flex';
-        this.element.style.flexWrap = 'wrap';
-        // this.element.style.justifyContent = 'center'; // Original had this, but for a name in a bento grid, standard flow might be better? Original prompt: "MatrixText" component
-        // The original component had 'items-center justify-center'. The user's H1 is left aligned in a bento cell (Cell 1).
-        // Let's keep flex but maybe not force center if it breaks layout. 
-        // Actually, H1 in the bento cell seems standard block.
-        // Let's use inline-block spans.
+        // Remove flex to allow standard flow with breaks, or handle breaks manually in flex
+        // The user wants "Marcos" above "Galdamez" on mobile.
+        // Standard inline-block with <br> works better than flex for this.
+        this.element.style.display = 'block';
+        this.element.style.textAlign = 'center'; // Or inherit
 
-        this.letterElements = this.letters.map((letter, index) => {
-            const span = document.createElement('span');
-            if (letter.isSpace) {
-                span.innerHTML = '&nbsp;';
+        this.letterElements = [];
+        this.animateableItems = []; // Keep track of only the chars for animation index
+
+        this.parsedContent.forEach((item, index) => {
+            if (item.type === 'break') {
+                this.element.appendChild(document.createElement('br'));
             } else {
-                span.innerText = letter.char;
-            }
-            span.style.display = 'inline-block';
-            span.style.width = '1ch';
-            span.style.textAlign = 'center';
-            span.style.transition = 'color 0.1s ease, text-shadow 0.1s ease';
+                const span = document.createElement('span');
+                if (item.isSpace) {
+                    span.innerHTML = '&nbsp;';
+                } else {
+                    span.innerText = item.char;
+                }
+                span.style.display = 'inline-block';
+                span.style.width = '1ch';
+                span.style.textAlign = 'center';
+                span.style.transition = 'color 0.1s ease, text-shadow 0.1s ease';
 
-            this.element.appendChild(span);
-            return span;
+                this.element.appendChild(span);
+                this.letterElements.push(span); // Store reference
+                this.animateableItems.push(item); // Store data
+            }
         });
     }
 
@@ -62,13 +92,13 @@ export class MatrixText {
     }
 
     animateLetter(index) {
-        if (index >= this.letters.length) return;
+        if (index >= this.letterElements.length) return;
 
-        const letterState = this.letters[index];
-        if (letterState.isSpace) return;
+        const item = this.animateableItems[index];
+        if (item.isSpace) return;
 
         const span = this.letterElements[index];
-        const originalChar = letterState.char;
+        const originalChar = item.char;
 
         // Start Matrix State
         const startTime = Date.now();
@@ -101,7 +131,7 @@ export class MatrixText {
         let currentIndex = 0;
 
         const nextLetter = () => {
-            if (currentIndex >= this.letters.length) {
+            if (currentIndex >= this.letterElements.length) {
                 this.isAnimating = false;
                 return;
             }

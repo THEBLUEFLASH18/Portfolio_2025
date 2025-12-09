@@ -555,7 +555,7 @@ nav div:first-child {
 .cell-label {
     position: absolute;
     top: 15px;
-    right: 15px;
+    left: 20px;
     font-size: 0.7rem;
     color: #444;
     letter-spacing: 1px;
