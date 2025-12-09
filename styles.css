@@ -275,7 +275,7 @@ nav {
     border: 2px solid #ccc;
 }
 
-nav .nav-links {
+.nav-links {
     display: flex;
     align-items: center;
     padding: 20px;
