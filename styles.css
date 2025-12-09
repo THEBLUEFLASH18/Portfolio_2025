@@ -610,7 +610,7 @@ nav div:first-child {
     }
 
     .bento-photo {
-        height: 250px;
+        height: 330px;
     }
 }
 
@@ -717,7 +717,7 @@ nav div:first-child {
     }
 
     .bento-cell {
-        padding: 50px 20px 20px 20px;
+        padding: 40px 20px 20px 20px;
         /* Uniform padding for all cells on mobile */
     }
 }
