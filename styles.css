@@ -326,7 +326,7 @@ nav {
 }
 
 .burger-menu .lock-closed {
-    color: #00ff00;
+    color: #00ff00 !important;
 }
 
 .burger-menu .lock-open {
