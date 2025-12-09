@@ -339,6 +339,41 @@
 
     </main>
     <script type="module" src="script.js"></script>
+    <script>
+        // Inline UI Script for Mobile Menu
+        document.addEventListener('DOMContentLoaded', () => {
+            const burgerMenu = document.querySelector('.burger-menu');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (burgerMenu && navLinks) {
+                console.log("Mobile Menu Initialized");
+                burgerMenu.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Prevent bubbling issues
+                    burgerMenu.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                    console.log("Menu Toggled:", burgerMenu.classList.contains('active'));
+                });
+
+                // Close menu when a link is clicked
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        burgerMenu.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!burgerMenu.contains(e.target) && !navLinks.contains(e.target) && navLinks.classList.contains('active')) {
+                        burgerMenu.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    }
+                });
+            } else {
+                console.error("Mobile Menu Elements Not Found");
+            }
+        });
+    </script>
 </body>
 
 </html>
