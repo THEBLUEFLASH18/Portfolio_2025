@@ -321,13 +321,18 @@ nav {
     position: absolute;
     font-size: 1rem;
     color: inherit;
-    /* Inherit green/cyan from parent, overrides global * { color: white } */
+    /* Inherit green/cyan from parent */
     transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
+}
+
+.burger-menu .lock-closed {
+    color: #00ff00;
 }
 
 .burger-menu .lock-open {
     opacity: 0;
     transform: translateY(-4px);
+    color: #00ffff;
 }
 
 .burger-menu.active {
