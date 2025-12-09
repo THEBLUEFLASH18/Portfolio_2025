@@ -283,21 +283,28 @@ nav {
 
 /* Burger Menu - Hidden on Desktop */
 .burger-menu {
-    display: none; /* show only on mobile via media query */
+    display: none;
+    /* show only on mobile via media query */
     cursor: pointer;
-    padding: 12px;
+    padding: 10px;
+    /* Reduced from 12px */
     z-index: 1001;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
+    /* Reduced gap */
     font-family: 'Space Mono', monospace;
-    color: #00ff00; /* locked state matches green spans */
+    color: #00ff00;
+    /* locked state matches green spans */
     text-shadow: 0 0 6px rgba(0, 255, 0, 0.7);
     transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .burger-menu .code-arrow {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    /* Reduced from 0.9rem */
     letter-spacing: 1px;
+    transition: color 0.3s ease;
+    /* Ensure transition exists */
 }
 
 .burger-menu .burger-lock {
@@ -312,7 +319,8 @@ nav {
 .burger-menu .burger-lock i {
     position: absolute;
     font-size: 1rem;
-    color: currentColor; /* arrows and locks share the same hue */
+    color: currentColor;
+    /* arrows and locks share the same hue */
     transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
 }
 
@@ -322,7 +330,8 @@ nav {
 }
 
 .burger-menu.active {
-    color: #00ffff; /* unlocked cyan */
+    color: #00ffff;
+    /* unlocked cyan */
     text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
 }
 
@@ -338,6 +347,7 @@ nav {
 }
 
 @media (min-width: 769px) {
+
     /* Force-hide burger on desktop widths */
     .burger-menu {
         display: none !important;
