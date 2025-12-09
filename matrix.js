@@ -4,7 +4,7 @@ export class MatrixText {
         this.originalText = this.element.innerText;
         this.chars = options.chars || "01";
         this.period = options.period || 300; // Interval between frames
-        this.duration = options.duration || 2000; // Duration of the scramble effect per letter needed? 
+        this.duration = options.duration || 3000; // Duration of the scramble effect per letter needed? 
         // Actually, the original React code had:
         // initialDelay = 200
         // letterAnimationDuration = 500
