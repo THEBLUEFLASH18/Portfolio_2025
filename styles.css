@@ -711,5 +711,13 @@ nav div:first-child {
     .name-container h1 {
         margin-top: 5px;
         margin-bottom: 10px;
+        font-size: 1.8rem;
+        /* Prevent wrapping on small screens */
+        line-height: 1.2;
+    }
+
+    .bento-cell {
+        padding: 50px 20px 20px 20px;
+        /* Uniform padding for all cells on mobile */
     }
 }
