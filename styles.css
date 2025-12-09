@@ -287,55 +287,63 @@ nav {
     cursor: pointer;
     padding: 20px;
     z-index: 1001;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Space Mono', monospace;
+    color: #7fffd4;
+    text-shadow: 0 0 6px rgba(0, 255, 170, 0.7);
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
-.burger-menu span,
-.burger-menu span::before,
-.burger-menu span::after {
-    display: block;
-    background-color: #00ff00;
-    /* Neon Green */
-    height: 3px;
-    width: 30px;
+.burger-menu .code-arrow {
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.burger-menu .burger-lock {
     position: relative;
-    border-radius: 2px;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 0 5px #00ff00;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: rgba(0, 255, 170, 0.1);
+    border: 1px solid #00ff00;
+    box-shadow: 0 0 8px rgba(0, 255, 0, 0.4);
 }
 
-.burger-menu span::before,
-.burger-menu span::after {
-    content: '';
+.burger-menu .burger-lock i {
     position: absolute;
+    font-size: 1.2rem;
+    color: #00ff00;
+    transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
 }
 
-.burger-menu span::before {
-    top: -10px;
+.burger-menu .lock-open {
+    opacity: 0;
+    transform: translateY(-4px);
 }
 
-.burger-menu span::after {
-    top: 10px;
+.burger-menu.active {
+    color: #00ffff;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
 }
 
-/* Burger Active State (X shape) */
-.burger-menu.active span {
-    background-color: transparent;
-    box-shadow: none;
+.burger-menu.active .burger-lock {
+    border-color: #00ffff;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
 }
 
-.burger-menu.active span::before {
-    top: 0;
-    transform: rotate(45deg);
-    background-color: #00ffff;
-    /* Switch to Cyan */
-    box-shadow: 0 0 5px #00ffff;
+.burger-menu.active .lock-closed {
+    opacity: 0;
+    transform: translateY(4px);
 }
 
-.burger-menu.active span::after {
-    top: 0;
-    transform: rotate(-45deg);
-    background-color: #00ffff;
-    box-shadow: 0 0 5px #00ffff;
+.burger-menu.active .lock-open {
+    opacity: 1;
+    transform: translateY(0);
+    color: #00ffff;
 }
 
 nav div button {
