@@ -275,10 +275,67 @@ nav {
     border: 2px solid #ccc;
 }
 
-nav div {
+nav .nav-links {
     display: flex;
     align-items: center;
     padding: 20px;
+}
+
+/* Burger Menu - Hidden on Desktop */
+.burger-menu {
+    display: none;
+    cursor: pointer;
+    padding: 20px;
+    z-index: 1001;
+}
+
+.burger-menu span,
+.burger-menu span::before,
+.burger-menu span::after {
+    display: block;
+    background-color: #00ff00;
+    /* Neon Green */
+    height: 3px;
+    width: 30px;
+    position: relative;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 5px #00ff00;
+}
+
+.burger-menu span::before,
+.burger-menu span::after {
+    content: '';
+    position: absolute;
+}
+
+.burger-menu span::before {
+    top: -10px;
+}
+
+.burger-menu span::after {
+    top: 10px;
+}
+
+/* Burger Active State (X shape) */
+.burger-menu.active span {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.burger-menu.active span::before {
+    top: 0;
+    transform: rotate(45deg);
+    background-color: #00ffff;
+    /* Switch to Cyan */
+    box-shadow: 0 0 5px #00ffff;
+}
+
+.burger-menu.active span::after {
+    top: 0;
+    transform: rotate(-45deg);
+    background-color: #00ffff;
+    box-shadow: 0 0 5px #00ffff;
 }
 
 nav div button {
@@ -528,33 +585,54 @@ nav div:first-child {
         padding: 10px;
     }
 
-    /* Redesign Nav for Mobile */
+    /* Redesign Nav for Mobile with Burger */
     nav {
-        flex-direction: column;
-        height: auto;
-        padding: 10px 0;
-        gap: 20px;
+        flex-direction: row;
+        /* Keep row for logo + burger */
+        justify-content: space-between;
+        align-items: center;
+        height: 70px;
+        position: relative;
     }
 
-    nav div {
+    /* Hide links by default on mobile */
+    .nav-links {
+        display: none;
+        /* JS will toggle this to flex/block */
         flex-direction: column;
+        position: absolute;
+        top: 70px;
+        /* Below nav bar */
+        left: 0;
         width: 100%;
-        padding: 0;
-        gap: 10px;
+        background-color: rgba(0, 0, 0, 0.95);
+        border-bottom: 2px solid #00ff00;
+        padding: 20px 0;
+        z-index: 1000;
+        gap: 15px;
+        box-shadow: 0 5px 20px rgba(0, 255, 0, 0.1);
     }
 
-    nav div:first-child {
-        border-bottom: 2px solid #ccc;
-        padding-bottom: 10px;
-        justify-content: center;
+    /* Show links when active */
+    .nav-links.active {
+        display: flex;
     }
 
-    nav div button {
-        margin-left: 0;
-        width: 90%;
+    .burger-menu {
+        display: block;
+        /* Show burger on mobile */
+    }
+
+    nav .nav-links button {
+        margin: 0;
+        width: 80%;
         text-align: center;
-        background-color: #000;
-        /* Better touch target contrast */
+        border-color: #333;
+    }
+
+    nav .nav-links button:hover {
+        border-color: #00ff00;
+        color: #00ff00;
     }
 
     /* Adjust Grid */
