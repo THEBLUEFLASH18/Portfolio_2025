@@ -434,6 +434,7 @@ nav div:first-child {
     grid-row: span 1;
     grid-row: span 1;
     justify-content: start;
+    align-items: flex-start;
 }
 
 .bento-intro h3 {
@@ -449,6 +450,12 @@ nav div:first-child {
     margin: 0 0 15px 0;
     line-height: 1.1;
     text-transform: uppercase;
+}
+
+.intro-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 /* Cell 2: Photo (Top Right - Large) */
@@ -661,6 +668,37 @@ nav div:first-child {
         color: #00ff00;
     }
 
+    .bento-intro {
+        align-items: center;
+        text-align: center;
+        padding: 40px 20px 30px 20px;
+        border-color: #00ffff55;
+        background: radial-gradient(circle at 18% 18%, #11141c, #070708 68%);
+        box-shadow: 0 10px 30px rgba(0, 255, 255, 0.08);
+    }
+
+    .bento-intro .intro-content {
+        align-items: center;
+        gap: 16px;
+    }
+
+    .bento-intro #matrix-identity {
+        font-size: 2.1rem;
+        letter-spacing: 1px;
+    }
+
+    .bento-intro .detail-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        margin-top: 4px;
+    }
+
+    .bento-intro .detail-label {
+        min-width: auto;
+        color: #9ad9ff;
+    }
+
     /* Adjust Grid */
     .experiment-card {
         flex: 1 1 100%;
@@ -686,6 +724,6 @@ nav div:first-child {
     }
 
     #matrix-identity {
-        text-align: left;
+        text-align: center;
     }
 }
