@@ -438,7 +438,7 @@ nav div:first-child {
 
 .name-container {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     margin-bottom: 0px;
     /* H1 has margin */
 }
@@ -700,5 +700,16 @@ nav div:first-child {
     .detail-label {
         margin-bottom: 5px;
         /* Add spacing between label and value when stacked */
+    }
+
+    .name-container,
+    .detail-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .name-container h1 {
+        margin-top: 5px;
+        margin-bottom: 10px;
     }
 }
