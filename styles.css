@@ -283,13 +283,12 @@ nav {
 
 /* Burger Menu - Hidden on Desktop */
 .burger-menu {
-    display: none;
+    display: none; /* show only on mobile via media query */
     cursor: pointer;
-    padding: 20px;
+    padding: 12px;
     z-index: 1001;
-    display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     font-family: 'Space Mono', monospace;
     color: #7fffd4;
     text-shadow: 0 0 6px rgba(0, 255, 170, 0.7);
@@ -297,7 +296,7 @@ nav {
 }
 
 .burger-menu .code-arrow {
-    font-size: 1rem;
+    font-size: 0.9rem;
     letter-spacing: 1px;
 }
 
@@ -306,17 +305,14 @@ nav {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
-    background: rgba(0, 255, 170, 0.1);
-    border: 1px solid #00ff00;
-    box-shadow: 0 0 8px rgba(0, 255, 0, 0.4);
+    width: 24px;
+    height: 24px;
 }
 
 .burger-menu .burger-lock i {
     position: absolute;
-    font-size: 1.2rem;
-    color: #00ff00;
+    font-size: 1rem;
+    color: #7fffd4;
     transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
 }
 
@@ -326,13 +322,8 @@ nav {
 }
 
 .burger-menu.active {
-    color: #00ffff;
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
-}
-
-.burger-menu.active .burger-lock {
-    border-color: #00ffff;
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+    color: #7fffd4;
+    text-shadow: 0 0 10px rgba(0, 255, 170, 0.8);
 }
 
 .burger-menu.active .lock-closed {
@@ -627,8 +618,7 @@ nav div:first-child {
     }
 
     .burger-menu {
-        display: block;
-        /* Show burger on mobile */
+        display: flex;
     }
 
     nav .nav-links button {
