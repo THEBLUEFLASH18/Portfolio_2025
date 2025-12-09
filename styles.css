@@ -432,7 +432,8 @@ nav div:first-child {
 .bento-intro {
     grid-column: span 2;
     grid-row: span 1;
-    justify-content: center;
+    grid-row: span 1;
+    justify-content: start;
 }
 
 .bento-intro h3 {
@@ -448,7 +449,6 @@ nav div:first-child {
     margin: 0 0 15px 0;
     line-height: 1.1;
     text-transform: uppercase;
-    text-align: right;
 }
 
 /* Cell 2: Photo (Top Right - Large) */
