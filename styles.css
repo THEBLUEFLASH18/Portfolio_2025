@@ -318,103 +318,211 @@ nav div:first-child {
     background-color: transparent;
 }
 
-/* Researcher Section Styles */
-.researcher-title {
-    font-size: 1.5rem;
-    color: #ccc;
-    margin-bottom: 20px;
+/* Bento Grid Layout */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto auto;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.bento-cell {
+    background-color: #080808;
+    border: 1px dashed #666;
+    border-radius: 20px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.bento-cell:hover {
+    border-color: #00ffff;
+    transform: translateY(-2px);
+}
+
+/* Cell Specific Layouts */
+
+/* Cell 1: Intro (Top Left) */
+.bento-intro {
+    grid-column: span 2;
+    grid-row: span 1;
+    justify-content: center;
+}
+
+.bento-intro h3 {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0 0 5px 0;
     letter-spacing: 2px;
 }
 
-.about-me-highlight {
-    color: #00ffff;
-    /* Cyber cyan for "ME" */
-    font-weight: bold;
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
-}
-
-.researcher-card {
-    border: 1px dashed #666;
-    /* Outer dashed border per image */
-    border-radius: 20px;
-    padding: 40px;
-    /* Increased padding */
-    position: relative;
-    background-color: #080808;
-    max-width: none;
-    /* Remove max-width for hero effect */
-    width: 100%;
-    margin-bottom: 40px;
-    /* Spacing below hero */
-    display: flex;
-    flex-direction: row;
-    /* Layout image and details side-by-side */
-    gap: 40px;
-    /* Space between text and image */
-    align-items: center;
-}
-
-/* Double border effect using box-shadow or another nested div? 
-   The image shows a single dashed line with rounded corners. 
-   Our previous cards had double. Let's stick to the reference: Single dashed line.
-*/
-
-.researcher-details {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    font-size: 1rem;
-    line-height: 1.6;
-}
-
-.researcher-details .detail-row {
-    align-items: flex-start;
-    /* Align text to top for multiline interests */
-}
-
-.researcher-details .detail-label {
-    min-width: 180px;
-    /* Wider label for "AFFILIATION" etc */
-    color: #888;
-}
-
-.researcher-details .detail-value {
-    color: #ddd;
+.bento-intro h1 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin: 0 0 15px 0;
+    line-height: 1.1;
     text-transform: uppercase;
 }
 
-.researcher-photo {
-    position: relative;
-    /* Change from absolute to relative for flex layout */
-    top: auto;
-    right: auto;
-    width: 350px;
-    /* Larger image */
-    height: 350px;
-    object-fit: cover;
-    border: 2px solid #00ffff;
-    /* Cyber border */
-    border-radius: 10px;
-    /* Slight rounded corners or circle? Let's go square per console aesthetic */
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
-    /* Make sure text doesn't overlap if image is huge. 
-       We might need to use flexbox for the card content instead of absolute positioning if the image is large.
-       For now, let's try absolute but update the container detailing width. */
-    flex-shrink: 0;
-    /* Prevent image from shrinking */
+/* Cell 2: Photo (Top Right - Large) */
+.bento-photo {
+    grid-column: span 2;
+    grid-row: span 2;
+    padding: 0;
+    border: none;
+    overflow: hidden;
+    background: transparent;
 }
 
-/* Update details to not overlap with image */
-.researcher-details {
+.bento-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 1px solid #333;
+}
+
+/* Cell 3: Bio (Middle Left) */
+.bento-bio {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+.bento-bio p {
+    color: #ccc;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Cell 4: Stats (Bottom Left) */
+.bento-stats {
+    grid-column: span 1;
+}
+
+.stat-item {
+    margin-bottom: 12px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    font-size: 1rem;
-    line-height: 1.6;
-    /* Take remaining space */
-    max-width: none;
 }
 
+.download-link {
+    color: #00ff00;
+    text-decoration: none;
+    border: 1px solid #005500;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 5px;
+    font-size: 0.8rem;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.download-link:hover {
+    background-color: #00ff00;
+    color: #000;
+}
+
+/* Cell 5: Tech (Bottom Middle) */
+.bento-tech {
+    grid-column: span 1;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tech-tags span {
+    background-color: #1a1a1a;
+    color: #00ffff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    border: 1px solid #333;
+}
+
+/* Cell 6: Personal (Bottom Right - underneath photo if needed, or sidebar)
+   For 4 columns:
+   Row 1: Intro (2), Photo (2)
+   Row 2: Bio (2), Photo (cont.)
+   Row 3: Stats (1), Tech (1), Personal (2)
+*/
+.bento-personal {
+    grid-column: span 2;
+}
+
+.personal-group {
+    margin-bottom: 10px;
+}
+
+.group-label {
+    display: block;
+    color: #888;
+    font-size: 0.8rem;
+    margin-bottom: 3px;
+}
+
+/* Common Labels */
+.cell-label {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 0.7rem;
+    color: #444;
+    letter-spacing: 1px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bento-intro {
+        grid-column: span 2;
+    }
+
+    .bento-photo {
+        grid-column: span 2;
+        grid-row: auto;
+        height: 300px;
+    }
+
+    .bento-bio {
+        grid-column: span 2;
+    }
+
+    .bento-stats {
+        grid-column: span 1;
+    }
+
+    .bento-tech {
+        grid-column: span 1;
+    }
+
+    .bento-personal {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 600px) {
+    .bento-grid {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bento-photo {
+        height: 250px;
+    }
+}
+
+/* Restored Mobile Styles */
 @media (max-width: 768px) {
     body {
         padding: 10px;
@@ -447,32 +555,6 @@ nav div:first-child {
         text-align: center;
         background-color: #000;
         /* Better touch target contrast */
-    }
-
-    /* Redesign Researcher Card for Mobile */
-    .researcher-card {
-        flex-direction: column;
-        padding: 20px;
-        gap: 20px;
-    }
-
-    .researcher-photo {
-        width: 100%;
-        height: auto;
-        max-width: 300px;
-        /* Prevent massive images on pads */
-        margin: 0 auto;
-        /* Center it */
-    }
-
-    .researcher-details .detail-label {
-        min-width: 120px;
-        /* Shrink label spacing */
-        font-size: 0.9rem;
-    }
-
-    .researcher-details {
-        width: 100%;
     }
 
     /* Adjust Grid */
