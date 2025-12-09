@@ -448,7 +448,7 @@ nav div:first-child {
     margin: 0 0 15px 0;
     line-height: 1.1;
     text-transform: uppercase;
-    text-align: center;
+    text-align: right;
 }
 
 /* Cell 2: Photo (Top Right - Large) */
