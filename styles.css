@@ -303,6 +303,7 @@ nav {
     font-size: 0.8rem;
     /* Reduced from 0.9rem */
     letter-spacing: 1px;
+    color: inherit;
     transition: color 0.3s ease;
     /* Ensure transition exists */
 }
@@ -333,6 +334,10 @@ nav {
     color: #00ffff;
     /* unlocked cyan */
     text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+.burger-menu.active .code-arrow {
+    color: inherit;
 }
 
 .burger-menu.active .lock-closed {
