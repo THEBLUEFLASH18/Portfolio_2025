@@ -290,8 +290,8 @@ nav {
     align-items: center;
     gap: 6px;
     font-family: 'Space Mono', monospace;
-    color: #7fffd4;
-    text-shadow: 0 0 6px rgba(0, 255, 170, 0.7);
+    color: #00ff00; /* locked state matches green spans */
+    text-shadow: 0 0 6px rgba(0, 255, 0, 0.7);
     transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
@@ -312,7 +312,7 @@ nav {
 .burger-menu .burger-lock i {
     position: absolute;
     font-size: 1rem;
-    color: #7fffd4;
+    color: #00ff00;
     transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
 }
 
@@ -322,8 +322,8 @@ nav {
 }
 
 .burger-menu.active {
-    color: #7fffd4;
-    text-shadow: 0 0 10px rgba(0, 255, 170, 0.8);
+    color: #00ffff; /* unlocked cyan */
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
 }
 
 .burger-menu.active .lock-closed {
