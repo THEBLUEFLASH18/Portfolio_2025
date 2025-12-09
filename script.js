@@ -323,3 +323,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+// ... existing code ...
+
+import { MatrixText } from "./matrix.js";
+
+// Initialize Matrix Text
+document.addEventListener('DOMContentLoaded', () => {
+    const matrixTitle = new MatrixText("matrix-identity", {
+        letterAnimationDuration: 500,
+        letterInterval: 100
+    });
+});
