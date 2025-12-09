@@ -456,7 +456,7 @@ nav div:first-child {
     margin: 0 0 15px 0;
     line-height: 1.1;
     text-transform: uppercase;
-    text-align: center;
+    text-align: left;
 }
 
 /* Cell 2: Photo (Top Right - Large) */
@@ -695,11 +695,6 @@ nav div:first-child {
 
     #matrix-identity {
         text-align: left;
-    }
-
-    .name-container,
-    .detail-row {
-        flex-direction: column;
     }
 
     .detail-label {
