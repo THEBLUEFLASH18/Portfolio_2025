@@ -312,7 +312,7 @@ nav {
 .burger-menu .burger-lock i {
     position: absolute;
     font-size: 1rem;
-    color: #00ff00;
+    color: currentColor; /* arrows and locks share the same hue */
     transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
 }
 
@@ -335,6 +335,13 @@ nav {
     opacity: 1;
     transform: translateY(0);
     color: #00ffff;
+}
+
+@media (min-width: 769px) {
+    /* Force-hide burger on desktop widths */
+    .burger-menu {
+        display: none !important;
+    }
 }
 
 nav div button {
