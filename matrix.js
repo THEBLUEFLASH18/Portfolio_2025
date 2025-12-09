@@ -60,7 +60,7 @@ export class MatrixText {
         // The user wants "Marcos" above "Galdamez" on mobile.
         // Standard inline-block with <br> works better than flex for this.
         this.element.style.display = 'block';
-        this.element.style.textAlign = 'center'; // Or inherit
+        // using css for text align
 
         this.letterElements = [];
         this.animateableItems = []; // Keep track of only the chars for animation index

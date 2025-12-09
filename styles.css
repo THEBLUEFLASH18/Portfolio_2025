@@ -414,7 +414,7 @@ nav div:first-child {
     background-color: #080808;
     border: 1px dashed #666;
     border-radius: 20px;
-    padding: 25px;
+    padding: 50px 25px 25px 25px;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -448,6 +448,7 @@ nav div:first-child {
     margin: 0 0 15px 0;
     line-height: 1.1;
     text-transform: uppercase;
+    text-align: center;
 }
 
 /* Cell 2: Photo (Top Right - Large) */
@@ -682,5 +683,9 @@ nav div:first-child {
 
     .comms-send-btn {
         width: 100%;
+    }
+
+    #matrix-identity {
+        text-align: left;
     }
 }
