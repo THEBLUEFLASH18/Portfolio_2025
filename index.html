@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <title>Marcos' Lab Matrix</title>
+</head>
+
+<body>
+    <nav>
+        <div>
+            <img src="images/Computer_logo.png" alt="Lab Console Logo">
+        </div>
+        <div class="burger-menu">
+            <span class="code-arrow code-arrow-left">&lt;!--</span>
+            <span class="burger-lock">
+                <i class="fa-solid fa-lock lock-closed"></i>
+                <i class="fa-solid fa-lock-open lock-open"></i>
+            </span>
+            <span class="code-arrow code-arrow-right">--&gt;</span>
+        </div>
+        <div class="nav-links">
+            <button><a href="#researcher">Researcher</a></button>
+            <button><a href="#experiments">Experiments</a></button>
+            <button><a href="#code-lab">Code Lab</a></button>
+            <button><a href="#live-demos">Upcoming</a></button>
+            <button><a href="#comms-uplink">Comms</a></button>
+            <button><a href="https://github.com/THEBLUEFLASH18">Github</a></button>
+        </div>
+    </nav>
+
+    <main>
+        <div id="researcher" class="section-card" style="border: none;">
+            <!-- Override section card border for this specific look if needed, or keep it as container -->
+            <div class="researcher-title">RESEARCHER // ABOUT <span class="about-me-highlight">ME</span></div>
+            <div class="bento-grid">
+                <!-- Cell 1: Intro / Title -->
+                <div class="bento-cell bento-intro">
+                    <div class="intro-content">
+                        <div class="name-container">
+                            <h1 id="matrix-identity">MARCOS GALDAMEZ</h1>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; FIELD:</span>
+                            <span class="detail-value">INFORMATION SCIENCE (WEB DEV FOCUS) @ USF</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cell 2: Photo -->
+                <div class="bento-cell bento-photo">
+                    <img src="images/Researcher.png" alt="Researcher Profile">
+                </div>
+
+                <!-- Cell 3: Bio -->
+                <div class="bento-cell bento-bio">
+                    <div class="cell-label">&gt; BIO_LOG</div>
+                    <p>
+                        I’m a software engineer in training building my foundation through real projects, consistent
+                        practice, and a commitment to learning every year. My GitHub includes 40+ projects ranging from
+                        JavaScript applications and Python scripts to full web interfaces and React experiments.
+
+                        I’ve designed and developed multiple websites—including my personal portfolio and a professional
+                        site for an Estate Company—while completing hands-on coursework at USF and independent study
+                        through Codecademy.
+                        <br>
+                        My work spans:
+                        <br>
+                        • JavaScript front-end projects (Chrome extensions, React Router practice, weather apps, slot
+                        machine simulations)
+                        <br>
+                        • Python applications and problem-solving scripts
+                        <br>
+                        • HTML/CSS websites with practical UI/UX implementations
+                        <br>
+                        • Firebase integrations and small full-stack practice apps
+                        <br>
+                        • Version-controlled academic and personal projects that show my progress as a developer
+                        <br>
+                        I aim to master a new area of programming each academic year, building skills through continuous
+                        experimentation and real-world application. I’m always learning, always shipping, and always
+                        improving.
+                    </p>
+                </div>
+
+                <!-- Cell 4: Stats / Quick Info -->
+                <div class="bento-cell bento-stats">
+                    <div class="cell-label">&gt; STATUS_REPORT</div>
+                    <div class="stat-item">
+                        <span class="detail-label">&gt; LOC:</span>
+                        <span class="detail-value">TAMPA, FL</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="detail-label">&gt; STATE:</span>
+                        <span class="status-online">ONLINE // ACTIVE</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="detail-label">&gt; FILE:</span>
+                        <span>
+                            <a href="ResumeMarcosGaldamezDecember2025.pdf" download="Marcos_Galdamez_Resume.pdf"
+                                title="Download Resume" class="download-link">
+                                DOWNLOAD_RESUME
+                            </a>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Cell 5: Tech Stack -->
+                <div class="bento-cell bento-tech">
+                    <div class="cell-label">&gt; TECH_STACK</div>
+                    <div class="tech-tags">
+                        <span>JAVASCRIPT</span>
+                        <span>REACT.JS</span>
+                        <span>NODE.JS</span>
+                        <span>PYTHON</span>
+                        <span>GIT</span>
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>PHP</span>
+                        <span>TYPESCRIPT</span>
+                        <span>MYSQL</span>
+                        <span>BOOTSTRAP</span>
+                        <span>TAILWIND</span>
+                        <span>FIGMA</span>
+                        <span>ADOBE XD</span>
+                        <span>PHOTOSHOP</span>
+                        <span>ILLUSTRATOR</span>
+                    </div>
+                </div>
+
+                <!-- Cell 6: Interests & Strengths -->
+                <div class="bento-cell bento-personal">
+                    <div class="cell-label">&gt; PERSONAL_DATA</div>
+                    <div class="personal-group">
+                        <span class="group-label">INTERESTS:</span>
+                        <span>SOCCER, ARDUINO, PROGRAMMING, ELECTRICAL WORK</span>
+                    </div>
+                    <div class="personal-group">
+                        <span class="group-label">STRENGTHS:</span>
+                        <span>ADAPTABILITY, CRITICAL THINKING, CREATIVE IMAGINATION</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="experiments" class="section-card">
+            <h2>Experiments</h2>
+            <div class="experiments-grid">
+                <!-- Card 1 -->
+                <a class="experiment-card" href="#" target="_blank">
+                    <div class="card-header">
+                        <span class="card-title">PROJECT // GENESIS</span>
+                        <img src="images/Flask.png" alt="Flask" class="experiment-icon">
+                    </div>
+                    <div class="card-details">
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; PROJECT NAME:</span>
+                            <span class="detail-value">GENESIS PROTOCOL</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; LANGUAGE:</span>
+                            <span class="detail-value">PYTHON 3.9</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; STATUS:</span>
+                            <span class="detail-value status-online">ONLINE // ACTIVE</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; VERSION:</span>
+                            <span class="detail-value">v1.0.4</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; LAST COMMIT:</span>
+                            <span class="detail-value">2025-12-04</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 2 -->
+                <a class="experiment-card" href="#" target="_blank">
+                    <div class="card-header">
+                        <span class="card-title">PROJECT // BREW</span>
+                        <img src="images/Flask2.png" alt="Flask 2" class="experiment-icon">
+                    </div>
+                    <div class="card-details">
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; PROJECT NAME:</span>
+                            <span class="detail-value">QUANTUM MIST</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; LANGUAGE:</span>
+                            <span class="detail-value">JAVASCRIPT / WEBGL</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; STATUS:</span>
+                            <span class="detail-value status-warning">UNSTABLE</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; VERSION:</span>
+                            <span class="detail-value">0.8.2-alpha</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; LAST COMMIT:</span>
+                            <span class="detail-value">2025-11-30</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 3 -->
+                <a class="experiment-card" href="#" target="_blank">
+                    <div class="card-header">
+                        <span class="card-title">PROJECT // ISOTOPE</span>
+                        <img src="images/Flask3.png" alt="Flask 3" class="experiment-icon">
+                    </div>
+                    <div class="card-details">
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; PROJECT NAME:</span>
+                            <span class="detail-value">DECAY SIMULATION</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; LANGUAGE:</span>
+                            <span class="detail-value">C++</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; STATUS:</span>
+                            <span class="detail-value status-active">RESEARCH</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; VERSION:</span>
+                            <span class="detail-value">v0.1.0</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; LAST COMMIT:</span>
+                            <span class="detail-value">2025-11-20</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 4 -->
+                <a class="experiment-card" href="#" target="_blank">
+                    <div class="card-header">
+                        <span class="card-title">PROJECT // PROTOTYPE X</span>
+                        <img src="images/Flask.png" alt="Flask" class="experiment-icon">
+                    </div>
+                    <div class="card-details">
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; PROJECT NAME:</span>
+                            <span class="detail-value">UNKNOWN PROTOCOL</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; LANGUAGE:</span>
+                            <span class="detail-value">UNKNOWN</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; STATUS:</span>
+                            <span class="detail-value status-online">OFFLINE</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; VERSION:</span>
+                            <span class="detail-value">v0.0.0</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; LAST COMMIT:</span>
+                            <span class="detail-value">PENDING</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 5 -->
+                <a class="experiment-card" href="#" target="_blank">
+                    <div class="card-header">
+                        <span class="card-title">PROJECT // PROTOTYPE Y</span>
+                        <img src="images/Flask2.png" alt="Flask 2" class="experiment-icon">
+                    </div>
+                    <div class="card-details">
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; PROJECT NAME:</span>
+                            <span class="detail-value">UNKNOWN PROTOCOL</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; LANGUAGE:</span>
+                            <span class="detail-value">UNKNOWN</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; STATUS:</span>
+                            <span class="detail-value status-online">OFFLINE</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; VERSION:</span>
+                            <span class="detail-value">v0.0.0</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; LAST COMMIT:</span>
+                            <span class="detail-value">PENDING</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 6 -->
+                <a class="experiment-card" href="#" target="_blank">
+                    <div class="card-header">
+                        <span class="card-title">PROJECT // PROTOTYPE Z</span>
+                        <img src="images/Flask3.png" alt="Flask 3" class="experiment-icon">
+                    </div>
+                    <div class="card-details">
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; PROJECT NAME:</span>
+                            <span class="detail-value">UNKNOWN PROTOCOL</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; LANGUAGE:</span>
+                            <span class="detail-value">UNKNOWN</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; STATUS:</span>
+                            <span class="detail-value status-online">OFFLINE</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; VERSION:</span>
+                            <span class="detail-value">v0.0.0</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">&gt; LAST COMMIT:</span>
+                            <span class="detail-value">PENDING</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div id="code-lab" class="section-card">
+            <h2>Code Lab</h2>
+
+        </div>
+
+        <div id="live-demos" class="section-card">
+            <h2>Live Demos</h2>
+
+        </div>
+
+        <div id="comms-uplink" class="section-card">
+            <h2>Comms // Uplink</h2>
+            <div class="comms-container">
+
+                <!-- AUTHENTICATION INTERFACE -->
+                <div id="auth-container">
+                    <div class="comms-message system-message">> AUTHENTICATION REQUIRED.</div>
+                    <div class="comms-message system-message">> IDENTIFY YOURSELF TO PROCEED.</div>
+
+                    <div class="auth-forms">
+                        <form id="login-form" class="auth-box">
+                            <input type="email" id="auth-email" placeholder="EMAIL ADDRESS" required
+                                class="comms-input full-width">
+                            <input type="password" id="auth-password" placeholder="PASSWORD" required
+                                class="comms-input full-width">
+                            <div class="auth-buttons">
+                                <button type="submit" id="btn-login" class="comms-send-btn">LOGIN</button>
+                                <button type="button" id="btn-register"
+                                    class="comms-send-btn outline-btn">REGISTER</button>
+                            </div>
+                        </form>
+                        <div class="auth-divider">--- OR ---</div>
+                        <button id="btn-google" class="comms-send-btn google-btn">SIGN IN WITH GOOGLE
+                            CHECKPOINT</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+    </main>
+    <script type="module" src="script.js"></script>
+    <script>
+        // Inline UI Script for Mobile Menu
+        document.addEventListener('DOMContentLoaded', () => {
+            const burgerMenu = document.querySelector('.burger-menu');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (burgerMenu && navLinks) {
+                console.log("Mobile Menu Initialized");
+                burgerMenu.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Prevent bubbling issues
+                    burgerMenu.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                    console.log("Menu Toggled:", burgerMenu.classList.contains('active'));
+                });
+
+                // Close menu when a link is clicked
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        burgerMenu.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!burgerMenu.contains(e.target) && !navLinks.contains(e.target) && navLinks.classList.contains('active')) {
+                        burgerMenu.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    }
+                });
+            } else {
+                console.error("Mobile Menu Elements Not Found");
+            }
+        });
+    </script>
+</body>
+
+</html>
