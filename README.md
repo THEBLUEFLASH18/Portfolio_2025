@@ -16,13 +16,15 @@ Portfolio for Marcos Galdamez, AI Engineer (Tampa, FL), with a gated dashboard-s
 - **Project cards**: all six “Experiments” cards are authored in `index.html`. Cards with a `data-repo` attribute get their last-commit date and activity status from the GitHub API in `script.js`; everything else is static so crawlers see real content.
 - **Auth**: Firebase email/password and Google Sign-In; auth state listener redirects between `index.html` and `dashboard.html`.
 - **Comms**: Firestore-backed chat. Each message is a document in `messages` with `conversationId` = visitor UID, `senderId`, `senderEmail`, `role` (`visitor` or `admin`), and `timestamp`. The dashboard subscribes to `conversationId == currentUser.uid` ordered by `timestamp`.
-- **Deployment helper**: `netlify.toml` replaces `FIREBASE_KEY_PLACEHOLDER` in `script.js` with the Netlify env var `FIREBASE_KEY`.
+- **Build step**: `netlify.toml` runs `node build.mjs`, which injects the Netlify env var `FIREBASE_KEY` into `comms.js` and inlines a minified `styles.css` into every HTML page so first paint needs no extra request. Source files stay untouched; only the deployed copy changes.
+- **Firebase loads on demand**: `script.js` handles the public page (GitHub cards, name animation) and dynamically imports `comms.js` (Firebase Auth + Firestore chat) only when the Comms section nears the viewport or the form is touched. `dashboard.html` loads it immediately.
+- **Assets**: self-hosted Space Mono in `fonts/`, WebP images, an inline SVG sprite for UI icons (Lucide + Simple Icons), and Recraft-generated outline icons in `images/icons/` for section headings and project cards. `_headers` sets long cache lifetimes for images and fonts.
 
 ## Firebase setup
 1) Create a Firebase project and a web app; enable Email/Password and Google providers.  
 2) In Firestore, create the composite index that the chat query needs: collection `messages`, fields `conversationId` (ASC) and `timestamp` (ASC).  
 3) Add your Firebase config to `script.js` (or keep the placeholder if Netlify injects it).  
-4) For Netlify: set env var `FIREBASE_KEY` and keep the `netlify.toml` build command as-is.
+4) For Netlify: set env var `FIREBASE_KEY` and keep the `netlify.toml` build command as-is (`node build.mjs`).
 
 ## Admin replies (no UI yet)
 Use the Firebase console → Firestore → `messages` → “Add document” with:
@@ -36,4 +38,4 @@ Use the Firebase console → Firestore → `messages` → “Add document” wit
 The dashboard already renders any doc where `conversationId` matches the visitor and orders them by `timestamp`, showing admin vs visitor styling.
 
 ## Running locally
-Serve the files with any static server (or open `index.html`). If not deploying through Netlify, replace `FIREBASE_KEY_PLACEHOLDER` in `script.js` with your real `apiKey` before loading the page. Replace CDN Firebase version numbers if you want to pin a different release.
+Serve the files with any static server (or open `index.html`). If not deploying through Netlify, replace `FIREBASE_KEY_PLACEHOLDER` in `comms.js` with your real `apiKey` before loading the page, or run `FIREBASE_KEY=... node build.mjs` on a copy. Replace CDN Firebase version numbers if you want to pin a different release.

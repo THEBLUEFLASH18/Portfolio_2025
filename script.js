@@ -1,234 +1,8 @@
-// script.js (top)
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
-import {
-    getAuth,
-    onAuthStateChanged,
-    signInWithEmailAndPassword,
-    createUserWithEmailAndPassword,
-    signInWithPopup,
-    GoogleAuthProvider,
-    signOut
-} from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
-import {
-    getFirestore,
-    collection,
-    addDoc,
-    query,
-    where,
-    orderBy,
-    onSnapshot,
-    serverTimestamp
-} from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+// script.js — public page behaviour. Firebase (auth + chat) lives in comms.js
+// and is imported only when it is actually needed, so the public page paints
+// without downloading ~300 KB of Firebase.
 
-
-
-// Firebase Configuration
-// Production: Netlify 'sed' command replaces "FIREBASE_KEY_PLACEHOLDER" with real env var.
-const firebaseConfig = {
-    apiKey: "FIREBASE_KEY_PLACEHOLDER",
-    authDomain: "portfolio-messaging-53591.firebaseapp.com",
-    projectId: "portfolio-messaging-53591",
-    storageBucket: "portfolio-messaging-53591.firebasestorage.app",
-    messagingSenderId: "96342758934",
-    appId: "1:96342758934:web:0ebcf941b940a7a20d4737",
-    measurementId: "G-5F0794MX11"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const auth = getAuth(app);
-const googleProvider = new GoogleAuthProvider();
-
-
-
-
-// UI Elements
-const authContainer = document.getElementById('auth-container');
-const chatContainer = document.getElementById('chat-container');
-const userDisplay = document.getElementById('user-display');
-const commsLog = document.getElementById('comms-log');
-const commsInput = document.getElementById('comms-input');
-const sendBtn = document.getElementById('comms-send-btn');
-
-// Debugging
-console.log("Portfolio Script Loaded.");
-
-// Auth Inputs
-const emailInput = document.getElementById('auth-email');
-const passInput = document.getElementById('auth-password');
-const btnLogin = document.getElementById('btn-login');
-const btnRegister = document.getElementById('btn-register');
-const btnGoogle = document.getElementById('btn-google');
-const btnLogout = document.getElementById('btn-logout');
-
-console.log("Auth Elements Found:", { btnLogin, btnRegister, btnGoogle });
-
-let currentUser = null;
-let unsubscribeChat = null;
-
-// --- AUTH EVENT LISTENERS ---
-
-// Page State Helper
-const isDashboard = window.location.pathname.includes('dashboard.html');
-
-// Auth State Observer
-onAuthStateChanged(auth, (user) => {
-    console.log("Auth State Changed:", user);
-    currentUser = user;
-
-    if (user) {
-        // User is Logged In
-        if (!isDashboard) {
-            // Redirect to Dashboard if on Index
-            console.log("Redirecting to Dashboard...");
-            window.location.href = 'dashboard.html';
-        } else {
-            // We are on Dashboard, Init Chat
-            userDisplay.textContent = `USER: ${user.email || 'ANONYMOUS'} // UID: ${user.uid.substring(0, 6)}...`;
-            loadMessages(user);
-        }
-    } else {
-        // User is Logged Out
-        if (isDashboard) {
-            // Redirect to Index if on Dashboard
-            console.log("Redirecting to Login...");
-            window.location.href = 'index.html';
-        }
-        // On Index, just show login (which is default in HTML now)
-        userDisplay.textContent = 'USER: DISCONNECTED';
-
-        if (unsubscribeChat) unsubscribeChat();
-        if (commsLog) commsLog.innerHTML = `<div class="comms-message system-message">> TERMINAL LOCKED. LOGIN REQUIRED.</div>`;
-    }
-});
-
-// Login (Form Submit)
-const loginForm = document.getElementById('login-form');
-if (loginForm) {
-    loginForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        console.log("Login Form Submitted");
-        try {
-            await signInWithEmailAndPassword(auth, emailInput.value, passInput.value);
-            console.log("Login Success");
-        } catch (error) {
-            console.error("Login Error", error);
-            alert(`LOGIN FAILED: ${error.message}`);
-        }
-    });
-}
-
-// Register
-if (btnRegister) {
-    btnRegister.addEventListener('click', async () => {
-        console.log("Register Clicked");
-        try {
-            await createUserWithEmailAndPassword(auth, emailInput.value, passInput.value);
-            console.log("Register Success");
-        } catch (error) {
-            console.error("Register Error", error);
-            alert(`REGISTRATION FAILED: ${error.message}`);
-        }
-    });
-}
-
-// Google Sign In
-if (btnGoogle) {
-    btnGoogle.addEventListener('click', async () => {
-        console.log("Google Clicked");
-        try {
-            await signInWithPopup(auth, googleProvider);
-            console.log("Google Success");
-        } catch (error) {
-            console.error(error);
-            alert(`GOOGLE SIGN-IN FAILED: ${error.message}`);
-        }
-    });
-}
-
-// Logout
-if (btnLogout) {
-    btnLogout.addEventListener('click', () => signOut(auth));
-}
-
-// --- CHAT LOGIC ---
-
-async function loadMessages(user) {
-    commsLog.innerHTML = `<div class="comms-message system-message">> ESTABLISHING SECURE CHANNEL...</div>`;
-
-    // Messaging Logic:
-    // conversationId is ALWAYS the Visitor's UID.
-    // Visitor queries for conversationId == their IDs.
-    // Admin replies by sending a message with conversationId == the specific Visitor's UID.
-
-    const q = query(
-        collection(db, "messages"),
-        where("conversationId", "==", user.uid),
-        orderBy("timestamp", "asc")
-    );
-
-    unsubscribeChat = onSnapshot(q, (snapshot) => {
-        commsLog.innerHTML = '';
-
-        if (snapshot.empty) {
-            commsLog.innerHTML = `<div class="comms-message system-message">> SECURE CHANNEL ESTABLISHED. NO HISTORY.</div>`;
-        }
-
-        snapshot.forEach((doc) => {
-            const data = doc.data();
-            if (data.text) {
-                const role = data.role || (data.senderId === user.uid ? 'visitor' : 'admin');
-                const className = role === 'visitor' ? 'user-message' : 'system-message';
-                const senderLabel = role === 'admin'
-                    ? (data.senderEmail || 'ADMIN')
-                    : (data.senderEmail || 'YOU');
-
-                appendLog(`${senderLabel}: ${data.text}`, className);
-            }
-        });
-
-        commsLog.scrollTop = commsLog.scrollHeight;
-    }, (error) => {
-        console.error("Chat Error:", error);
-        // Error handling matches previous logic
-    });
-}
-
-// Send Message
-if (sendBtn && commsInput) {
-    const handleSend = async () => {
-        const text = commsInput.value.trim();
-        if (!text || !currentUser) return;
-
-        commsInput.value = '';
-
-        try {
-            await addDoc(collection(db, "messages"), {
-                text: text,
-                conversationId: currentUser.uid, // The channel ID
-                senderId: currentUser.uid,       // Who sent this specific message
-                senderEmail: currentUser.email || 'visitor',
-                role: 'visitor',
-                timestamp: serverTimestamp(),
-            });
-        } catch (e) {
-            console.error("Send Error:", e);
-            appendLog(`> TRANSMISSION ERROR`, 'system-message');
-        }
-    };
-
-    sendBtn.addEventListener('click', handleSend);
-    commsInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') handleSend();
-    });
-}
-
-function appendLog(message, className) {
-    const div = document.createElement('div');
-    div.className = `comms-message ${className || ''}`;
-    div.textContent = `> ${message}`;
-    commsLog.appendChild(div);
-}
+import { MatrixText } from "./matrix.js";
 
 // GitHub API Logic
 // Cards that carry a data-repo attribute get their last-commit date and
@@ -279,15 +53,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-
-// ... existing code ...
-
-import { MatrixText } from "./matrix.js";
-
-// Initialize Matrix Text
+// Matrix name reveal
 document.addEventListener('DOMContentLoaded', () => {
-    const matrixTitle = new MatrixText("matrix-identity", {
-        letterAnimationDuration: 500,
-        letterInterval: 100
-    });
+    if (document.getElementById('matrix-identity')) {
+        new MatrixText("matrix-identity", {
+            letterAnimationDuration: 500,
+            letterInterval: 100
+        });
+    }
 });
+
+// Comms // Uplink: load Firebase on demand
+(() => {
+    const isDashboard = window.location.pathname.includes('dashboard.html');
+    let loaded = false;
+    const loadComms = () => {
+        if (loaded) return;
+        loaded = true;
+        import('./comms.js').catch((err) => console.error('Comms failed to load:', err));
+    };
+
+    if (isDashboard) { loadComms(); return; }
+
+    const section = document.getElementById('comms-uplink');
+    if (!section) return;
+
+    // Any interaction with the auth form loads immediately.
+    ['focusin', 'pointerdown'].forEach((evt) => section.addEventListener(evt, loadComms, { once: true, passive: true }));
+
+    // Otherwise load once the section is close to the viewport.
+    if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+            if (entries.some((e) => e.isIntersecting)) { loadComms(); io.disconnect(); }
+        }, { rootMargin: '600px 0px' });
+        io.observe(section);
+    } else {
+        loadComms();
+    }
+})();
