@@ -4,24 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
     <link rel="stylesheet" href="styles.css">
-    <title>Marcos' Lab Matrix</title>
+    <title>Comms Dashboard | Marcos Galdamez</title>
 </head>
 
 <body>
-    <nav>
-        <div>
-            <img src="images/Computer_logo.png" alt="Lab Console Logo">
-        </div>
-        <div>
-            <button><a href="#researcher">Researcher</a></button>
-            <button><a href="#experiments">Experiments</a></button>
-            <button><a href="#code-lab">Code Lab</a></button>
-            <button><a href="#live-demos">Live Demos</a></button>
-            <button><a href="#comms-uplink">Comms</a></button>
-            <button><a href="https://github.com/THEBLUEFLASH18">Github</a></button>
-        </div>
-    </nav>
+    <header class="site-header">
+        <nav class="nav" aria-label="Primary">
+            <a href="index.html" class="nav-brand" aria-label="Marcos Galdamez, home">
+                <img src="images/Computer_logo.png" alt="" width="1280" height="800" class="nav-mark">
+                <span class="nav-brand-text">
+                    <span class="nav-name">MARCOS_GALDAMEZ</span>
+                    <span class="nav-tagline"><span class="nav-dot" aria-hidden="true"></span>AI ENGINEER · TAMPA, FL</span>
+                </span>
+            </a>
+            <button class="burger-menu" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav">
+                <span class="code-arrow code-arrow-left">&lt;!--</span>
+                <span class="burger-lock">
+                    <i class="fa-solid fa-lock lock-closed" aria-hidden="true"></i>
+                    <i class="fa-solid fa-lock-open lock-open" aria-hidden="true"></i>
+                </span>
+                <span class="code-arrow code-arrow-right">--&gt;</span>
+            </button>
+            <div class="nav-links" id="primary-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html#researcher">About</a></li>
+                    <li><a href="index.html#experience">Experience</a></li>
+                    <li><a href="index.html#experiments">Projects</a></li>
+                    <li><a href="index.html#code-lab">Code Lab</a></li>
+                    <li><a href="index.html#live-demos">Demos</a></li>
+                    <li><a href="geo-case-study.html">Case Study</a></li>
+                    <li><a href="#comms-uplink" aria-current="true">Comms</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="https://github.com/THEBLUEFLASH18" class="nav-icon" target="_blank" rel="me noopener" aria-label="GitHub profile" title="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/marcos-galdamez" class="nav-icon" target="_blank" rel="me noopener" aria-label="LinkedIn profile" title="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+                    <a href="MarcosG_Oct_2026_Resume.pdf" download="Marcos_Galdamez_Resume.pdf" class="nav-cta"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i>RESUME</a>
+                </div>
+            </div>
+        </nav>
+    </header>
 
     <main>
         <div id="researcher" class="section-card" style="border: none;">
@@ -35,7 +60,15 @@
                     </div>
                     <div class="detail-row">
                         <span class="detail-label">&gt; FIELD:</span>
-                        <span class="detail-value">INFORMATION SCIENCE (WEB DEV FOCUS) @ USF</span>
+                        <span class="detail-value">AI ENGINEER // LLM OPTIMIZATION &amp; WORKFLOW AUTOMATION</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">&gt; EDU:</span>
+                        <span class="detail-value">B.S. INFORMATION SCIENCE (WEB DEV TECH) @ USF, 2026</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">&gt; CURRENT:</span>
+                        <span class="detail-value">AI ENGINEERING INTERN @ APSIS SOLUTIONS INC</span>
                     </div>
                     <div class="detail-row">
                         <span class="detail-label">&gt; LOCATION:</span>
@@ -44,10 +77,11 @@
                     <div class="detail-row">
                         <span class="detail-label">&gt; BIO:</span>
                         <span class="detail-value" style="text-transform: none;">
-                            I have created numerous small web pages to practice and master skills from Codecademy. While
-                            attending college, I aim to learn or master a different area of programming each year. As a
-                            freshman, I built my own portfolio page and created a website for an Estate Company. I
-                            constantly seek new knowledge to ensure success in my career.
+                            AI Engineer with production experience in LLM optimization and workflow automation. I ship
+                            end-to-end: enterprise n8n automation pipelines for lead generation and outreach, GEO
+                            infrastructure that drove a 20% lift in search and LLM-recommendation visibility, and a
+                            Python OCR retrieval system that cut document search time 60–80%. Fluent across Python,
+                            JavaScript/React, OpenAI API, RAG, and full-stack delivery.
                         </span>
                     </div>
                     <div class="detail-row">
@@ -61,7 +95,8 @@
                     </div>
                     <div class="detail-row">
                         <span class="detail-label">&gt; TECH STACK:</span>
-                        <span class="detail-value">JAVASCRIPT, REACT.JS, NODE.JS, PYTHON, GIT, HTML, CSS</span>
+                        <span class="detail-value">PYTHON, JAVASCRIPT/TYPESCRIPT, REACT, NODE.JS, OPENAI API, RAG, LANGCHAIN, N8N,
+                            FIREBASE, DOCKER, SQL, GIT</span>
                     </div>
                     <div class="detail-row">
                         <span class="detail-label">&gt; STATUS:</span>
@@ -295,6 +330,7 @@
 
     </main>
     <script type="module" src="script.js"></script>
+    <script src="nav.js" defer></script>
 </body>
 
 </html>

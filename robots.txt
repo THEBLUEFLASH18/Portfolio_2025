@@ -1,0 +1,22 @@
+# marcosgaldamezcruz.com
+User-agent: *
+Allow: /
+Disallow: /dashboard.html
+
+# AI crawlers are welcome. Summary for LLMs: /llms.txt
+User-agent: GPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+
+Sitemap: https://marcosgaldamezcruz.com/sitemap.xml

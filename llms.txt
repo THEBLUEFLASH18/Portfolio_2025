@@ -1,0 +1,58 @@
+# Marcos Galdamez — AI Engineer
+
+> AI Engineer in Tampa, FL specializing in LLM optimization, Generative Engine Optimization (GEO), Retrieval-Augmented Generation (RAG), and n8n workflow automation. Ships end-to-end: web infrastructure that gets brands recommended by ChatGPT, Claude, and Perplexity; enterprise automation pipelines; and Python OCR retrieval systems.
+
+Site: https://marcosgaldamezcruz.com/
+Email: Marcosgaldamez14@icloud.com
+LinkedIn: https://www.linkedin.com/in/marcos-galdamez
+GitHub: https://github.com/THEBLUEFLASH18
+Resume (PDF): https://marcosgaldamezcruz.com/MarcosG_Oct_2026_Resume.pdf
+Languages: English, Spanish
+Status: Open to AI Engineering roles
+
+## Headline results
+
+- 20% lift in search and LLM-recommendation visibility at Apsis Solutions Inc through GEO and LLM-indexing standards, validated against live analytics.
+- apsisinc.com is now consistently recommended by ChatGPT, Claude, and Perplexity for healthcare IT consulting.
+- 60–80% reduction in document retrieval time at USF Health Byrd Alzheimer's Institute via a Python OCR search system (pytesseract, pdfplumber).
+- 30% Google Search optimization gain and 80% faster page loads at BHM Healthcare (Google PageSpeed Insights).
+- 22% production throughput increase at Avizorca via a React vehicle-inspection intake form feeding Google Sheets.
+
+## Experience
+
+- **Apsis Solutions Inc** — AI Engineering Intern (Full-Time), Tampa, FL, May 2026 – Present. GEO web infrastructure, LLM indexing, n8n multi-stage workflows for lead generation, cold outreach, and content aggregation; automated web-scraping pipeline republishing industry articles as resource hubs.
+- **BHM Healthcare** — Web Management Intern (Part-Time), Tampa, FL, May 2026 – Sep 2026. Rebuilt landing pages in Elementor/WordPress, PageSpeed audits, ZeroRank AI GEO content-gap work, Google Search Console analysis.
+- **USF Health Byrd Alzheimer's Institute** — Administrative Assistant, Automation & Data Systems, Tampa, FL, Aug 2024 – May 2026. Python OCR retrieval and auto-classification system over typed and handwritten PDF/DOCX archives; legacy records reorganization; staff training and documentation.
+- **Avizorca** — Software Engineering Intern, San Pedro Sula, Honduras, Nov 2025 – Jan 2026. React vehicle service acceptance form with complex state, ISO-timestamped JSON payloads to Google Apps Script; 12-item GPS installation checklist.
+- **Nice View Window Cleaning LLC** — Software Engineering Intern, Lafayette, CO, Aug 2025 – Nov 2025. React lead-conversion form, Leaflet.js service-area map with lazy init, Netlify Function proxy to Google Places API for live reviews.
+
+## Projects
+
+- **FileCrawler OCR Search** (Python): https://github.com/THEBLUEFLASH18/FileCrawler — extended an open-source keyword crawler with OCR, signature detection, and auto-classification; deployed at USF Health.
+- **Mesura** (React, Vite, Firebase, Stripe, Netlify, Anthropic API): https://mesura.netlify.app/ — size cross-reference app that maps one garment you own into your size at any other store.
+- **Nice View Window Cleaning** (React 19, Vite, Netlify): https://niceviewwindowcleaningllc.com/ — prerendered multi-page client site with per-page JSON-LD, build-time Google reviews, and generated crawler files.
+- **Apsis Solutions Inc** (WordPress, GEO, n8n): https://apsisinc.com/ — GEO build at current role.
+- **Methodology** (JavaScript, Web Workers): private algorithms and data structures course graded on cost as well as correctness.
+- **AI-Powered RAG Chatbot** (Python, OpenAI API, embeddings, vector search): chunking, embedding, and vector similarity search for source-grounded answers with multi-turn conversation management.
+- **Portfolio_2025** (HTML, JavaScript, Firebase): https://github.com/THEBLUEFLASH18/Portfolio_2025 — this site; Firebase Auth/Firestore chat, GitHub API cards, custom animation class.
+
+## Skills
+
+- AI Engineering: OpenAI API, RAG, Embeddings, Vector Databases, LangChain, Hugging Face, Prompt Engineering, System Prompts, Hyperparameter Tuning, NLP, Generative Engine Optimization (GEO), LLM Indexing
+- Languages: Python, JavaScript, TypeScript, SQL, PHP, HTML, CSS
+- Frameworks & Libraries: React, Node.js, Express.js, Tailwind CSS, Bootstrap, Jest, Firebase SDK, D3.js, Three.js, Leaflet.js, Axios, jQuery, SASS
+- Automation & Tools: n8n, Google Apps Script, Google Sheets API, Docker, Git/GitHub, Netlify Serverless Functions, Webpack, Azure Data Studio, Oracle, Figma, WordPress/Elementor, Google Search Console, ZeroRank AI
+- Core: Full-Stack Development, REST API Integration, Web Scraping & Data Extraction, OCR (pytesseract, pdfplumber), Agile, Technical Documentation, UI/UX Design
+
+## Education & Certifications
+
+- University of South Florida — B.S. Information Science, Web Development Technology, Aug 2024 – May 2026
+- Hillsborough Community College — Associate in Arts, Jan 2022 – May 2024
+- DeepLearning.AI — Prompt Engineering for Developers
+- Codecademy — Front-End Developer
+- DataCamp — R Programming
+
+## Pages
+
+- [Portfolio home](https://marcosgaldamezcruz.com/): about, experience, projects, contact
+- [GEO case study](https://marcosgaldamezcruz.com/geo-case-study.html): how the Apsis and BHM visibility results were achieved
